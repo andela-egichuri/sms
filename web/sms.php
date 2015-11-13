@@ -38,16 +38,16 @@ else if ($level == 1) {
 }
 else {
 	$data = explode("#", $text);
-	$name = $data[0];
+	$name = explode("*", $data[0])[1];
 	$id = $data[1];
 	$location = $data[2];
 
-	echo 'CON Test text '.$name.' '.$id.' '.$location;
+	//echo 'CON Test text '.$name.' '.$id.' '.$location;
 	// save the details to db
 	$sql = 'INSERT INTO farmer_farmer (name, location, id_number, phone_number) VALUES ($name, $location, $id, $phoneNumber)';
 	$ret = pg_query($db, $sql);
 	if(!$ret){
-		echo 'END Error! Please try again';
+		echo 'END '.pg_last_error($db);
 	} else {
 		echo 'END You have been successfully registered';
 	}
