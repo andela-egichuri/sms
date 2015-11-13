@@ -26,7 +26,7 @@ if($level == 0) {
 else if ($level == 1) {
 	// Register The farmer
 	if($text == '1') {
-		echo 'CON Please enter your name#id#Location'.$phoneNumber;
+		echo 'CON Please enter your name#id#Location#FarmSize (acres)';
 	} else {
 		echo 'END Goodbye';
 	}
@@ -37,9 +37,10 @@ else {
 	$name = explode("*", $data[0])[1];
 	$id = $data[1];
 	$location = $data[2];
+	$fsize = $data[3];
 
 	// save the details to db
-	$sql = 'INSERT INTO farmer_farmer (name, location, id_number, phone_number) VALUES ('.$name.','.$location.','. $id.','. $phoneNumber.')';
+	$sql = 'INSERT INTO farmer_farmer (name, location, id_number, phone_number, farm_size) VALUES ($name, $location, $id, $phoneNumber, $fsize)';
 	$ret = pg_query($db, $sql);
 	if(!$ret){
 		echo 'END '.pg_last_error($db);
