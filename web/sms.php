@@ -42,10 +42,9 @@ else {
 	$id = $data[1];
 	$location = $data[2];
 
-	echo 'CON Test text '.$text.' '.$level;
+	echo 'CON Test text '.$name.' '.$id.' '.$location;
 	// save the details to db
-	$sql = 'INSERT INTO farmer_farmer (name, location, id_number, phone_number)
-			VALUES ($name, $location, $id, $phoneNumber)';
+	$sql = 'INSERT INTO farmer_farmer (name, location, id_number, phone_number) VALUES ($name, $location, $id, $phoneNumber)';
 	$ret = pg_query($db, $sql);
 	if(!$ret){
 		echo 'END Error! Please try again';
