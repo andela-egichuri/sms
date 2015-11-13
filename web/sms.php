@@ -1,6 +1,7 @@
 <?php
 
-$text = $_REQUEST['text'];
+$text = $_POST['text'];
+$phoneNumber = $_POST['phoneNumber'];
 
 $host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
 $port = '5432';
@@ -16,28 +17,31 @@ if(!db) {
 }
 // Welcome the farmer to the app 
 	// get the phone number
-$phoneNumber = $_POST['phoneNumber'];
 
-if($text == '') {
+if(empty($text)) {
 	// Check if the farmer is registered
 	$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
 	
 	$rs = pg_query($db, $sql);
 	if(!$rs) {
 		$reply = 'CON Welcome to KEAB \n';
-		$reply = '1. Register \n';
-		$reply = '2. Exit';
+		$reply .= '1. Register \n';
+		$reply .= '2. Exit';
 	}  else {
-		$reply = 'END You have already registered. Thanks for keeping it';
+		$reply = 'END You have already registered. Thanks for keeping it real';
+		exit;
 	}
-	
-
-	//$reply = 'Welcome to farmer-sb'
 }
 else if ($text == '1') {
 	// Register The farmer
-	$reply = 'Please enter your name#id#Location:';
-	$data = explode("#", $reply);
+	$reply = 'CON Please enter your name#id#Location \n';
+	
+}
+else if ($text == '2') {
+	$reply == 'END Goodbye';
+}
+else {
+	$data = explode("#", $text);
 	$name = $data[0];
 	$id = $data[1];
 	$location = $data[2];
@@ -52,10 +56,9 @@ else if ($text == '1') {
 		$reply = 'END You have been successfully registered';
 	}
 }
-else if ($text == '2') {
-	$reply == 'END Goodbye';
-}
 
+header('Content-type: text/plain');
 echo $reply;
+
 pg_close($db);
 ?>
