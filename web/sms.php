@@ -28,13 +28,14 @@ if($level == 0) {
 	}
 	exit;
 }
-else if ($text == '1') {
+else if ($level == 1) {
 	// Register The farmer
-	echo 'CON Please enter your name#id#Location \n';
-	
-}
-else if ($text == '2') {
-	echo 'END Goodbye';
+	if($text == '1') {
+		echo 'CON Please enter your name#id#Location';
+	} else {
+		echo 'END Goodbye';
+	}
+		
 }
 else {
 	$data = explode("#", $text);
