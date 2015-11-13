@@ -5,10 +5,11 @@ $phoneNumber = $_REQUEST['phoneNumber'];
 $host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
 $port = 5432;
 $dbname = 'dcaomiqgff85af';
-$credentials = 'user=igkvnbupupuifl password=2eLlt2szzW8sUp0Tec7BWc1g7U';
+$user='igkvnbupupuifl';
+$password='2eLlt2szzW8sUp0Tec7BWc1g7U';
 
 // connect to the database
-$db = pg_connect('$host $port $dbname $credentials');
+$db = pg_connect('host=$host port=$port dbname=$dbname user=$user password=$password');
 if(!$db) {
 	echo 'END Error! Please try again';
 } 
