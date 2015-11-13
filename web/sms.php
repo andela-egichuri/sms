@@ -16,16 +16,17 @@ if(!db) {
 	// get the phone number
 
 if(empty($text)) {
+	$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	// Check if the farmer is registered
-	$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
+	// $sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
 	
-	$rs = pg_query($db, $sql);
-	if(!$rs) {
-		$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
-	}  else {
-		$reply = 'END You have already registered. Thanks for keeping it real';	
-	}
-	exit;
+	// $rs = pg_query($db, $sql);
+	// if(!$rs) {
+	// 	$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
+	// }  else {
+	// 	$reply = 'END You have already registered. Thanks for keeping it real';	
+	// }
+	// exit;
 }
 else if ($text == '1') {
 	// Register The farmer
