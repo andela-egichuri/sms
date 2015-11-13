@@ -12,6 +12,7 @@ $db = pg_connect('$host $port $dbname $credentials');
 if(!db) {
 	echo 'END Error! Please try again';
 } 
+pg_trace('/tmp/trace.log', 'w', $db);
 // Welcome the farmer to the app 
 	// get the phone number
 $level = getLevel($text);
@@ -23,9 +24,9 @@ if($level == 0) {
 	$rs = pg_query($db, $sql);
 	
 	if(!$rs) {
-		$arr = pg_fetch_all_columns($rs, 1);
-
-		var_dump($arr);
+		
+		
+		pg_untrace($pgsql_conn);
 		echo 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	}  else {
 		echo 'END You have already registered. Thanks for keeping it real';	
