@@ -42,6 +42,7 @@ else {
 	$id = $data[1];
 	$location = $data[2];
 
+	echo 'CON Test text '.$text.' '.$level;
 	// save the details to db
 	$sql = 'INSERT INTO farmer_farmer (name, location, id_number, phone_number)
 			VALUES ($name, $location, $id, $phoneNumber)';
