@@ -19,8 +19,9 @@ if($level == 0) {
 	// Check if the farmer is registered
 	//$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
 	$sql ='SELECT * FROM farmer_farmer';
-	var_dump($sql);
+	
 	$rs = pg_query($db, $sql);
+	var_dump($rs);
 	if(!$rs) {
 		echo 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	}  else {
