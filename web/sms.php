@@ -21,7 +21,10 @@ if($level == 0) {
 	$sql = "SELECT * FROM `farmer_farmer`";
 	
 	$rs = pg_query($db, $sql);
-	var_dump($rs);
+	echo pg_field_table($rs, 0);
+	echo pg_field_table($rs, 0, true);
+
+	var_dump(pg_field_table($rs, 0));
 	if(!$rs) {
 		echo 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	}  else {
