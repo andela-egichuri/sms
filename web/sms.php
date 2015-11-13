@@ -2,11 +2,6 @@
 $text = $_REQUEST['text'];
 $phoneNumber = $_REQUEST['phoneNumber'];
 
-// $host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
-// $port = 5432;
-// $dbname = 'dcaomiqgff85af';
-// $user='igkvnbupupuifl';
-// $password='2eLlt2szzW8sUp0Tec7BWc1g7U';
 
 // connect to the database
 $db = pg_connect('host=ec2-54-217-240-205.eu-west-1.compute.amazonaws.com port=5432 dbname=dcaomiqgff85af user=igkvnbupupuifl password=2eLlt2szzW8sUp0Tec7BWc1g7U');
@@ -18,10 +13,9 @@ if(!$db) {
 $level = getLevel($text);
 if($level == 0) {
 	// Check if the farmer is registered
-	$sql ='SELECT * FROM farmer_farmer';
+	$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
 	
 	$rs = pg_query($db, $sql);
-	var_dump($rs);
 	if(!$rs) {
 		echo 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	}  else {
@@ -44,7 +38,6 @@ else {
 	$id = $data[1];
 	$location = $data[2];
 
-	//echo 'CON Test text '.$name.' '.$id.' '.$location;
 	// save the details to db
 	$sql = 'INSERT INTO farmer_farmer (name, location, id_number, phone_number) VALUES ('.$name.','.$location.','. $id.','. $phoneNumber.')';
 	$ret = pg_query($db, $sql);
