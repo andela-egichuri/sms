@@ -1,5 +1,4 @@
 <?php
-
 $text = $_POST['text'];
 $phoneNumber = $_POST['phoneNumber'];
 
@@ -11,10 +10,8 @@ $credentials = 'user=igkvnbupupuifl password=2eLlt2szzW8sUp0Tec7BWc1g7U';
 // connect to the database
 $db = pg_connect('$host $port $dbname $credentials');
 if(!db) {
-	echo 'Error: Connection failed!';
-} else {
-	echo "Opened database successfuly";
-}
+	$reply = 'END Error! Please try again';
+} 
 // Welcome the farmer to the app 
 	// get the phone number
 

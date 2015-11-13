@@ -1,4 +1,18 @@
 <?php
+$host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
+$port = '5432';
+$dbname = 'dcaomiqgff85af';
+$credentials = 'user=igkvnbupupuifl password=2eLlt2szzW8sUp0Tec7BWc1g7U';
+
+// connect to the database
+$db = pg_connect('$host $port $dbname $credentials');
+if(!db) {
+	echo 'Error: Connection failed!';
+} else {
+	echo "Opened database successfuly";
+}
+// Welcome the farmer to the app 
+	// get the phone number
 
 // Reads the variables sent via POST from our gateway
 $sessionId   = $_POST["sessionId"];
