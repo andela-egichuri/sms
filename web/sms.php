@@ -21,11 +21,11 @@ if($level == 0) {
 	$sql = "SELECT * FROM `farmer_farmer`";
 	
 	$rs = pg_query($db, $sql);
-	echo pg_field_table($rs, 0);
-	echo pg_field_table($rs, 0, true);
-
-	var_dump(pg_field_table($rs, 0));
+	
 	if(!$rs) {
+		$arr = pg_fetch_all_columns($rs, 1);
+
+		var_dump($arr);
 		echo 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	}  else {
 		echo 'END You have already registered. Thanks for keeping it real';	
