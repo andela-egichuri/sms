@@ -1,7 +1,6 @@
 <?php
-$text = $_POST['text'];
-$phoneNumber = $_POST['phoneNumber'];
-$level = getLevel($text);
+$text = $_REQUEST['text'];
+$phoneNumber = $_REQUEST['phoneNumber'];
 
 $host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
 $port = '5432';
@@ -15,7 +14,7 @@ if(!db) {
 } 
 // Welcome the farmer to the app 
 	// get the phone number
-
+$level = getLevel($text);
 if($level == 0) {
 	// Check if the farmer is registered
 	$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
