@@ -13,7 +13,7 @@ if(!$db) {
 $level = getLevel($text);
 if($level == 0) {
 	// Check if the farmer is registered
-	$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
+	$sql ='SELECT * FROM farmer_farmer WHERE phone_number = '.$phoneNumber;
 	
 	$rs = pg_query($db, $sql);
 	if(!$rs) {
