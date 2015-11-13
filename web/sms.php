@@ -30,7 +30,7 @@ if($level == 0) {
 else if ($level == 1) {
 	// Register The farmer
 	if($text == '1') {
-		echo 'CON Please enter your name#id#Location';
+		echo 'CON Please enter your name#id#Location'.$phoneNumber;
 	} else {
 		echo 'END Goodbye';
 	}
