@@ -1,6 +1,6 @@
 <?php
 $text = $_REQUEST['text'];
-$phoneNumber = $_REQUEST['phoneNumber'];
+$phoneNumber = substr($_REQUEST['phoneNumber'], 3);
 
 
 // connect to the database
