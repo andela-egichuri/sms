@@ -21,7 +21,7 @@ if(empty($text)) {
 	
 	$rs = pg_query($db, $sql);
 	if(!$rs) {
-		$reply = 'CON Welcome to KEAB '.$phoneNumber.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
+		$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	}  else {
 		$reply = 'END You have already registered. Thanks for keeping it real';	
 	}
