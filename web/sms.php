@@ -11,7 +11,7 @@ $credentials = 'user=igkvnbupupuifl password=2eLlt2szzW8sUp0Tec7BWc1g7U';
 // connect to the database
 $db = pg_connect('$host $port $dbname $credentials');
 if(!db) {
-	$reply = 'END Error! Please try again';
+	echo 'END Error! Please try again';
 } 
 // Welcome the farmer to the app 
 	// get the phone number
@@ -22,19 +22,19 @@ if($level == 0) {
 	
 	$rs = pg_query($db, $sql);
 	if(!$rs) {
-		$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
+		echo 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
 	}  else {
-		$reply = 'END You have already registered. Thanks for keeping it real';	
+		echo 'END You have already registered. Thanks for keeping it real';	
 	}
 	exit;
 }
 else if ($text == '1') {
 	// Register The farmer
-	$reply = 'CON Please enter your name#id#Location \n';
+	echo 'CON Please enter your name#id#Location \n';
 	
 }
 else if ($text == '2') {
-	$reply == 'END Goodbye';
+	echo 'END Goodbye';
 }
 else {
 	$data = explode("#", $text);
@@ -47,9 +47,9 @@ else {
 			VALUES ($name, $location, $id, $phoneNumber)';
 	$ret = pg_query($db, $sql);
 	if(!$ret){
-		$reply = 'END Error! Please try again';
+		echo 'END Error! Please try again';
 	} else {
-		$reply = 'END You have been successfully registered';
+		echo 'END You have been successfully registered';
 	}
 }
 function getLevel($text) {
@@ -62,8 +62,6 @@ function getLevel($text) {
 	}
 	return $level;
 }
-header('Content-type: text/plain');
-echo $reply;
 
 pg_close($db);
 ?>
