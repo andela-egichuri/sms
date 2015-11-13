@@ -9,7 +9,6 @@ $credentials = 'user=igkvnbupupuifl password=2eLlt2szzW8sUp0Tec7BWc1g7U';
 
 // connect to the database
 $db = pg_connect('$host $port $dbname $credentials');
-echo pg_dump $db;
 if(!db) {
 	echo 'END Error! Please try again';
 } 
@@ -19,7 +18,7 @@ $level = getLevel($text);
 if($level == 0) {
 	// Check if the farmer is registered
 	//$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
-	$sql ='SELECT * FROM farmer_farmer';
+	$sql = "SELECT * FROM `farmer_farmer`";
 	
 	$rs = pg_query($db, $sql);
 	var_dump($rs);
