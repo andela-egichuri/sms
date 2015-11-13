@@ -1,11 +1,6 @@
 <?php
-if (isset($_REQUEST['text'])) {
-	$text = $_REQUEST['text'];
-}
-else {
-	$text = '';
-}
 
+$text = $_REQUEST['text'];
 
 $host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
 $port = '5432';
