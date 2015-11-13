@@ -2,16 +2,16 @@
 $text = $_REQUEST['text'];
 $phoneNumber = $_REQUEST['phoneNumber'];
 
-$host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
-$port = 5432;
-$dbname = 'dcaomiqgff85af';
-$user='igkvnbupupuifl';
-$password='2eLlt2szzW8sUp0Tec7BWc1g7U';
+// $host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
+// $port = 5432;
+// $dbname = 'dcaomiqgff85af';
+// $user='igkvnbupupuifl';
+// $password='2eLlt2szzW8sUp0Tec7BWc1g7U';
 
 // connect to the database
-$db = pg_connect('host=$host port=$port dbname=$dbname user=$user password=$password');
+$db = pg_connect('host=ec2-54-217-240-205.eu-west-1.compute.amazonaws.com port=5432 dbname=dcaomiqgff85af user=igkvnbupupuifl password=2eLlt2szzW8sUp0Tec7BWc1g7U');
 if(!$db) {
-	echo 'END Error! Please try again';
+	echo 'END Connection Error! Please try again';
 } 
 // Welcome the farmer to the app 
 	// get the phone number
