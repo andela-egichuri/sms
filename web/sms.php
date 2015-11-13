@@ -1,6 +1,7 @@
 <?php
 $text = $_POST['text'];
 $phoneNumber = $_POST['phoneNumber'];
+$level = getLevel($text);
 
 $host = 'ec2-54-217-240-205.eu-west-1.compute.amazonaws.com'; 
 $port = '5432';
@@ -15,18 +16,17 @@ if(!db) {
 // Welcome the farmer to the app 
 	// get the phone number
 
-if(empty($text)) {
-	$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
+if($level == 0) {
 	// Check if the farmer is registered
-	// $sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
+	$sql ='SELECT * FROM farmer_farmer WHERE phone_number = $phoneNumber';
 	
-	// $rs = pg_query($db, $sql);
-	// if(!$rs) {
-	// 	$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
-	// }  else {
-	// 	$reply = 'END You have already registered. Thanks for keeping it real';	
-	// }
-	// exit;
+	$rs = pg_query($db, $sql);
+	if(!$rs) {
+		$reply = 'CON Welcome to KEAB '.PHP_EOL.'1. Register'.PHP_EOL.'2. Exit';
+	}  else {
+		$reply = 'END You have already registered. Thanks for keeping it real';	
+	}
+	exit;
 }
 else if ($text == '1') {
 	// Register The farmer
@@ -52,7 +52,16 @@ else {
 		$reply = 'END You have been successfully registered';
 	}
 }
-
+function getLevel($text) {
+	// check if text is empty
+	if(empty($text)) {
+		$level = 0;
+	} else {
+		$exploded_text = explode("*", $text);
+		$level = count($exploded_text);
+	}
+	return $level;
+}
 header('Content-type: text/plain');
 echo $reply;
 
